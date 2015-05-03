@@ -14,20 +14,80 @@
   <!-- endbuild -->
   </head>
   <body>
-
-
+    
   <!-- build:js scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
   <script src="bower_components/reactive/ractive.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="bower_components/md5/src/md5.js"></script>
   <script src="bower_components/bootstrap-material-design/dist/js/material.js"></script>
   <script src="bower_components/bootstrap-material-design/dist/js/ripples.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
+  <div id="result"></div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10" id="main_div">
+      <h1><strong>SDU Пікір алмасу</strong></h1>
 
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>Сен қалай таныстырыласың?</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-lg-10">
+            <input type="email" class="form-control" id="inputEmail" placeholder="Email" value="{{user_email}}">
+            <input type="text" class="form-control" id="inputName" placeholder="Name" value="{{user_name}}">
+            <button on-click='ok' class="btn btn-primary btn-sm">Басу</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title"><strong>{{array_length}} коментарийлар</strong></h3>
+        </div>
+        <div class="panel-body">
+          <div class="col-lg-10">
+            <div class="list-group">
+              {{#each comments}}
+              <div class="list-group-item">
+                <div class="row-content">
+                  <div class="least-content">{{date}}</div>
+                  <h4 class="list-group-item-heading">{{name}}</h4>
+                  <p class="list-group-item-text">{{comment}}</p>
+                </div>
+              </div>
+              <div class="list-group-separator"></div>
+              {{/each}}
+            </div>
+            
+            <ul class="btn" id = 'pager'>
+              <li><a href="#">Артқа</a></li>
+            </ul>
+            <ul class="btn" id = 'pager'>
+            <li><a href="#">Алға</a></li>
+           </ul>
+          </div>
+        </div>
+        <!--- COmment-->
+        <div class="panel-footer">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control" value="{{comment}}" placeholder="Comment">
+              <span class="input-group-btn">
+                <button on-click='add_comment' class="btn btn-primary btn-sm" id="add_comment">Пікір қосу</button>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!--End Comment->
+      </div>
+    </div>
+    <div class="col-lg-1"></div>
   <!-- build:js scripts/popup.js -->
   <script src="scripts/popup.js"></script>
   <!-- endbuild -->
+  
   </body>
+  
 </html>
